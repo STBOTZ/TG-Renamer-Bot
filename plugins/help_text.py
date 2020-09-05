@@ -39,16 +39,16 @@ async def cb_handler(bot, update):
         await update.message.delete() 
         await start(bot, update.message)
 
-    if "close" in update.data:
-        await update.message.delete()
-
-    if "help_back" in update.data: 
+    if "close"==update.data:
         await update.message.delete() 
+
+  elif "help_back"== update.data: 
+        await update.message.delete()
         await help_user(bot, update.message)
 
-    if "about" in update.data: 
-        await update.message.delete() 
-        await about_me(bot, update.message)
+  elif "about"==update.data:
+        await update.message.delete()
+        await about_text(bot,update)
 
 
 @pyrogram.Client.on_message(pyrogram.Filters.command(["help"]))
@@ -77,7 +77,7 @@ async def help_user(bot, update):
     )
 
 @pyrogram.Client.on_message(pyrogram.Filters.command(["about"]))
-async def about_me(bot, update):
+async def about_text(bot, update):
     # logger.info(update)
     TRChatBase(update.from_user.id, update.text, "/about")
     await bot.send_message(
