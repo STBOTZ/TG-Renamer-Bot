@@ -88,7 +88,7 @@ async def about_me(bot, update):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton('🔙Help🔙', callback_data="help_back"),
+                    InlineKeyboardButton('❓️Help❓️', callback_data="help_back"),
                     InlineKeyboardButton('🔐Close🔐', callback_data="close")
                 ]
             ]
