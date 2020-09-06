@@ -48,7 +48,7 @@ async def cb_handler(bot, update):
 
     if "about" in update.data: 
         await update.message.delete() 
-        await about_text(bot, update.message)
+        await about_text(bot.send_message)
 
 
 @pyrogram.Client.on_message(pyrogram.Filters.command(["help"]))
