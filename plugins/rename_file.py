@@ -20,6 +20,8 @@ else:
 # the Strings used for this "thing"
 from translation import Translation
 
+from plugins.help_text import help_user
+
 import pyrogram
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 from pyrogram import Client, Filters
@@ -40,7 +42,7 @@ async def cb_handler(bot, update):
     if "close" in update.data:
         await update.message.delete()
 
-    if "help_back" in update.data: 
+    if "help" in update.data: 
         await update.message.delete() 
         await help_user(bot, update.message)
 
@@ -102,7 +104,7 @@ async def rename_doc(bot, update):
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
-                                InlineKeyboardButton('❓️Help❓️', callback_data="help_back"),
+                                InlineKeyboardButton('❓️Help❓️', callback_data="help"),
                                 InlineKeyboardButton('🔐Close🔐', callback_data="close")
                             ]
                         ]
@@ -178,7 +180,7 @@ async def rename_doc(bot, update):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton('❓️Help❓️', callback_data="help_back"),
+                        InlineKeyboardButton('❓️Help❓️', callback_data="help"),
                         InlineKeyboardButton('🔐Close🔐', callback_data="close")
                     ]
                 ]
