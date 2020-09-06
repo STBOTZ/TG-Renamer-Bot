@@ -39,16 +39,16 @@ async def cb_handler(bot, update):
         await update.message.delete() 
         await start(bot, update.message)
 
-    if "close"==update.data:
-        await update.message.delete() 
-
-  elif "help_back"== update.data: 
+    if "close" in update.data: 
+        await update.message.delete()
+    
+    if "help_back" in update.data:
         await update.message.delete()
         await help_someone(bot, update.message)
 
-  elif "about"==update.data:
-        await update.message.delete()
-        await about_text(bot,update)
+    if "about" in update.data: 
+        await update.message.delete() 
+        await about_text(bot, update.message)
 
 
 @pyrogram.Client.on_message(pyrogram.Filters.command(["help"]))
