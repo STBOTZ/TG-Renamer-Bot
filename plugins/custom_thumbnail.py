@@ -23,23 +23,13 @@ else:
 from translation import Translation
 
 from plugins.help_text import help_user
+from plugins.help_text import cb_handler
 
 import pyrogram
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 from helper_funcs.chat_base import TRChatBase
 import database.database as sql
-
-
-@pyrogram.Client.on_callback_query()
-async def cb_handler(bot, update):
-
-    if "close" in update.data:
-        await update.message.delete()
-
-    if "help" in update.data: 
-        await update.message.delete() 
-        await help_user(bot, update.message)
 
 
 @pyrogram.Client.on_message(pyrogram.Filters.command(["generatecustomthumbnail"]))
@@ -158,7 +148,7 @@ async def show_thumb(bot, update):
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton('❓️Help❓️', callback_data="help"),
+                            InlineKeyboardButton('❓️Help❓️', callback_data="help_back"),
                             InlineKeyboardButton('🔐Close🔐', callback_data="close")
                         ]
                     ]
@@ -174,7 +164,7 @@ async def show_thumb(bot, update):
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton('❓️Help❓️', callback_data="help"),
+                            InlineKeyboardButton('❓️Help❓️', callback_data="help_back"),
                             InlineKeyboardButton('🔐Close🔐', callback_data="close")
                         ]
                     ]
@@ -207,7 +197,7 @@ async def delete_thumbnail(bot, update):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton('❓️Help❓️', callback_data="help"),
+                    InlineKeyboardButton('❓️Help❓️', callback_data="help_back"),
                     InlineKeyboardButton('🔐Close🔐', callback_data="close")
                 ]
             ]
