@@ -92,7 +92,7 @@ async def help_someone(bot, update):
                     InlineKeyboardButton('💛My Channel💛', url="t.me/KL35Cinemaz")
                 ],
                 [
-                    InlineKeyboardButton('🔙Back🔙', callback_data="help_back"),
+                    InlineKeyboardButton('🔙Back🔙', callback_data="start"),
                     InlineKeyboardButton('❣️About❣️', callback_data="about"),
                     InlineKeyboardButton('🔐Close🔐', callback_data="close")
                 ]
