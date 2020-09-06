@@ -45,6 +45,10 @@ async def cb_handler(bot, update):
     if "help_back" in update.data:
         await update.message.delete()
         await help_someone(bot, update.message)
+    
+    if "help" in update.data:
+        await update.message.delete()
+        await help_user(bot, update.message)
 
     if "about" in update.data: 
         await update.message.delete() 
@@ -67,7 +71,6 @@ async def help_user(bot, update):
                     InlineKeyboardButton('💛My Channel💛', url="t.me/KL35Cinemaz")
                 ],
                 [
-                    InlineKeyboardButton('❓️Help❓️', callback_data="help_back"),
                     InlineKeyboardButton('❣️About❣️', callback_data="about"),
                     InlineKeyboardButton('🔐Close🔐', callback_data="close")
                 ]
@@ -133,7 +136,7 @@ async def about_me(bot, update):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton('❓️Help❓️', callback_data="help_back"),
+                    InlineKeyboardButton('❓️Help❓️', callback_data="help"),
                     InlineKeyboardButton('🔐Close🔐', callback_data="close")
                 ]
             ]
@@ -197,7 +200,7 @@ async def kl35thumb(bot, update):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton('❓️Help❓️', callback_data="help_back"),
+                    InlineKeyboardButton('❓️Help❓️', callback_data="help"),
                     InlineKeyboardButton('🔐Close🔐', callback_data="close")
                 ]
             ]
