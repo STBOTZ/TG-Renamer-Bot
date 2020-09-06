@@ -44,15 +44,11 @@ async def cb_handler(bot, update):
     
     if "help_back" in update.data:
         await update.message.delete()
-        await help_someone(bot, update.message)
-    
-    if "help" in update.data:
-        await update.message.delete()
         await help_user(bot, update.message)
 
     if "about" in update.data: 
         await update.message.delete() 
-        await about_text(bot.send_message)
+        await about_me(bot, update.message)
 
 
 @pyrogram.Client.on_message(pyrogram.Filters.command(["help"]))
@@ -71,52 +67,8 @@ async def help_user(bot, update):
                     InlineKeyboardButton('💛My Channel💛', url="t.me/KL35Cinemaz")
                 ],
                 [
+                    InlineKeyboardButton('🔙Start🔙', callback_data="start"),
                     InlineKeyboardButton('❣️About❣️', callback_data="about"),
-                    InlineKeyboardButton('🔐Close🔐', callback_data="close")
-                ]
-            ]
-        ),
-        reply_to_message_id=update.message_id
-    )
-
-@pyrogram.Client.on_message(pyrogram.Filters.command(["help"]))
-async def help_someone(bot, update):
-    # logger.info(update)
-    TRChatBase(update.from_user.id, update.text, "/help")
-    await bot.send_message(
-        chat_id=update.chat.id,
-        text=Translation.HELP_USER,
-        parse_mode="html",
-        disable_web_page_preview=True,
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton('❤️My Group❤️', url="t.me/KL35Cinemas"),
-                    InlineKeyboardButton('💛My Channel💛', url="t.me/KL35Cinemaz")
-                ],
-                [
-                    InlineKeyboardButton('🔙Back🔙', callback_data="start"),
-                    InlineKeyboardButton('❣️About❣️', callback_data="about"),
-                    InlineKeyboardButton('🔐Close🔐', callback_data="close")
-                ]
-            ]
-        ),
-        reply_to_message_id=update.message_id
-    )
-
-@pyrogram.Client.on_message(pyrogram.Filters.command(["about"]))
-async def about_text(bot, update):
-    # logger.info(update)
-    TRChatBase(update.from_user.id, update.text, "/about")
-    await bot.send_message(
-        chat_id=update.chat.id,
-        text=Translation.ABOUT_ME,
-        parse_mode="html",
-        disable_web_page_preview=True,
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton('🔙Back🔙', callback_data="help_back"),
                     InlineKeyboardButton('🔐Close🔐', callback_data="close")
                 ]
             ]
@@ -136,7 +88,7 @@ async def about_me(bot, update):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton('❓️Help❓️', callback_data="help"),
+                    InlineKeyboardButton('🔙Help🔙', callback_data="help"),
                     InlineKeyboardButton('🔐Close🔐', callback_data="close")
                 ]
             ]
@@ -200,7 +152,7 @@ async def kl35thumb(bot, update):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton('❓️Help❓️', callback_data="help"),
+                    InlineKeyboardButton('❓️Help❓️', callback_data="help_back"),
                     InlineKeyboardButton('🔐Close🔐', callback_data="close")
                 ]
             ]
