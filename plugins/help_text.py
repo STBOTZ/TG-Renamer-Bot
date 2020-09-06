@@ -79,7 +79,7 @@ async def help_user(bot, update):
         reply_to_message_id=update.message_id
     )
 
-@pyrogram.Client.on_message(pyrogram.Filters.command([" "]))
+@pyrogram.Client.on_message(pyrogram.Filters.command(["help"]))
 async def help_someone(bot, update):
     # logger.info(update)
     TRChatBase(update.from_user.id, update.text, " ")
@@ -104,7 +104,7 @@ async def help_someone(bot, update):
         reply_to_message_id=update.message_id
     )
 
-@pyrogram.Client.on_message(pyrogram.Filters.command([" "]))
+@pyrogram.Client.on_message(pyrogram.Filters.command(["about"]))
 async def about_text(bot, update):
     # logger.info(update)
     TRChatBase(update.from_user.id, update.text, " ")
