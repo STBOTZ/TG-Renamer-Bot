@@ -25,7 +25,7 @@ from plugins.help_text import cb_handler
 
 import pyrogram
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
-from pyrogram import Client, Filters
+from pyrogram import Client, Filters, InlineKeyboardMarkup, InlineKeyboardButton
 
 from helper_funcs.chat_base import TRChatBase
 from helper_funcs.display_progress import progress_for_pyrogram
