@@ -37,7 +37,7 @@ async def cb_handler(bot, update):
     if "close" in update.data:
         await update.message.delete()
 
-    if "help_back" in update.data: 
+    if "help" in update.data: 
         await update.message.delete() 
         await help_user(bot, update.message)
 
@@ -158,7 +158,7 @@ async def show_thumb(bot, update):
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton('❓️Help❓️', callback_data="help_back"),
+                            InlineKeyboardButton('❓️Help❓️', callback_data="help"),
                             InlineKeyboardButton('🔐Close🔐', callback_data="close")
                         ]
                     ]
@@ -174,7 +174,7 @@ async def show_thumb(bot, update):
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton('❓️Help❓️', callback_data="help_back"),
+                            InlineKeyboardButton('❓️Help❓️', callback_data="help"),
                             InlineKeyboardButton('🔐Close🔐', callback_data="close")
                         ]
                     ]
@@ -207,7 +207,7 @@ async def delete_thumbnail(bot, update):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton('❓️Help❓️', callback_data="help_back"),
+                    InlineKeyboardButton('❓️Help❓️', callback_data="help"),
                     InlineKeyboardButton('🔐Close🔐', callback_data="close")
                 ]
             ]
